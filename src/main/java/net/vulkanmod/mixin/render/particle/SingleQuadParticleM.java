@@ -34,7 +34,7 @@ public abstract class SingleQuadParticleM extends Particle {
 
     protected SingleQuadParticleM(ClientLevel clientLevel, double d, double e, double f, double g, double h, double i) {
         super(clientLevel, d, e, f, g, h, i);
-        this.quadSize = 0.1F * (this.random.nextFloat() * 0.5F + 0.5F) * 2.0F;
+        this.quadSize = 0.1F * Math.fma(this.random.nextFloat(), 0.5F, 0.5F) * 2.0F;
     }
 
     /**

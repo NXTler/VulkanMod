@@ -36,13 +36,13 @@ public class ChunkArea {
             int l = width >> 1;
 
             for(int x1 = 0; x1 < 2; x1++) {
-                float xMin = this.position.x() + (x1 * l);
+                float xMin = Math.fma(x1, l, this.position.x());
                 float xMax = xMin + l;
                 for(int y1 = 0; y1 < 2; y1++) {
-                    float yMin = this.position.y() + (y1 * l);
+                    float yMin = Math.fma(y1, l, this.position.y());
                     float yMax = yMin + l;
                     for (int z1 = 0; z1 < 2; z1++) {
-                        float zMin = this.position.z() + (z1 * l);
+                        float zMin = Math.fma(z1, l, this.position.z());
                         float zMax = zMin + l;
 
                         frustumResult = frustum.cubeInFrustum(xMin, yMin, zMin,
@@ -52,13 +52,13 @@ public class ChunkArea {
                         if (frustumResult == FrustumIntersection.INTERSECT) {
                             int l2 = width >> 2;
                             for (int x2 = 0; x2 < 2; x2++) {
-                                float xMin2 = xMin + x2 * l2;
+                                float xMin2 = Math.fma(x2, l2, xMin);
                                 float xMax2 = xMin2 + l2;
                                 for (int y2 = 0; y2 < 2; y2++) {
-                                    float yMin2 = yMin + y2 * l2;
+                                    float yMin2 = Math.fma(y2, l2, yMin);
                                     float yMax2 = yMin2 + l2;
                                     for (int z2 = 0; z2 < 2; z2++) {
-                                        float zMin2 = zMin + z2 * l2;
+                                        float zMin2 = Math.fma(z2, l2, zMin);
                                         float zMax2 = zMin2 + l2;
 
                                         frustumResult = frustum.cubeInFrustum(xMin2, yMin2, zMin2,
